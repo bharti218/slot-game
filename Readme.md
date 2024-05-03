@@ -7,4 +7,4 @@ This is the slot game implementation using state machine pattern. There are four
 
 # State Machine
 The game transtions among this states as given in the following diagram.
-![State Machine Diagram](https://drive.google.com/file/d/1t7dZwg1x4fcbCb7gWMl-5W4n_S7_S3ox/view?usp=sharing)
+![State Machine Diagram](/Screenshots/IMG20240504005753.jpg)
