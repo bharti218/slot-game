@@ -18,6 +18,8 @@ namespace slotgame
         private float myReelAnimDuration;
         private float myInitYPos;
         private float mySlotItemHt;
+        private float reelHt;
+
 
         public void InitReel(float reelWidth, float reelHeight, int iconCount, float animDuration)
         {
@@ -25,6 +27,7 @@ namespace slotgame
             myInitYPos = reelHeight - reelHeight / iconCount;
             mySlotItemHt = reelHeight / iconCount;
             myRect.sizeDelta = new Vector2(reelWidth, reelHeight);
+            reelHt = reelHeight;
             for (int i = 0; i < iconCount; i++)
             {
                 GameObject icon = Instantiate(reelItem, transform);
@@ -35,7 +38,13 @@ namespace slotgame
                 mySlotItems.Add(slotItem);
 
                 Cell cell = new Cell();
-                cell.yCoordinate = myInitYPos - mySlotItemHt * (iconCount - i);
+
+                //if(iconCount%2 == 0)
+                //    cell.yCoordinate = (i - iconCount / 2 +.5f) * mySlotItemHt;
+                //else
+                //    cell.yCoordinate = (i - iconCount/2 ) * mySlotItemHt;
+
+                cell.yCoordinate = (i+.5f)* mySlotItemHt - reelHt / 2;
                 cells.Add(cell);
             }
 
@@ -43,7 +52,15 @@ namespace slotgame
 
         public void Spin()
         {
-            SpawnReel(mySlotItems);
+            for (int i = 0; i < mySlotItems.Count; i++)
+            {
+                mySlotItems[i].gameObject.SetActive(true);
+                IconData iconData = slotData.iconSprites[Random.Range(0, slotData.iconSprites.Length - 1)];
+                mySlotItems[i].InitSlotItem(iconData.myID, iconData.normalSprite, iconData.highlightSprite);
+                SlideIcon(mySlotItems[i].myRect, cells[i].yCoordinate, myReelAnimDuration);
+                SetCellOccupied(mySlotItems[i], cells[i].yCoordinate);
+                cells[i].SetOccupied(mySlotItems[i]);
+            }
         }
 
         public void ResetReel()
@@ -67,11 +84,16 @@ namespace slotgame
                 //Hide and reset slot item.
                 if (mySlotItems[i].gameObject.activeSelf && mySlotItems[i].iconID == maxfrequentIconID)
                 {
-                    mySlotItems[i].SetHighLightedState();
+                    mySlotItems[i].PlayBlastAnimation();
                     hiddenSlotItems.Add(mySlotItems[i]);
                     SetCellEmpty(mySlotItems[i]);
                 }
             }
+        }
+
+        public int GetHighLightedSymbolCount()
+        {
+            return hiddenSlotItems.Count;
         }
 
         public void DestroyMaxOccuringSymobol(ICON_ID maxfrequentIconID)
@@ -125,22 +147,33 @@ namespace slotgame
 
         public void RespwanHiddenReels()
         {
-            SpawnReel(hiddenSlotItems, mySlotItems.Count - hiddenSlotItems.Count);
+
+            //if (iconCount % 2 == 0)
+            //    cell.yCoordinate = (i - iconCount / 2 + .5f) * mySlotItemHt;
+            //else
+            //    cell.yCoordinate = (i - iconCount / 2) * mySlotItemHt;
+
+
+
+            int activeSymbolCount = mySlotItems.Count - hiddenSlotItems.Count;
+            for (int i = 0; i < hiddenSlotItems.Count; i++)
+            {
+                hiddenSlotItems[i].gameObject.SetActive(true);
+                IconData iconData = slotData.iconSprites[Random.Range(0, slotData.iconSprites.Length - 1)];
+                hiddenSlotItems[i].InitSlotItem(iconData.myID, iconData.normalSprite, iconData.highlightSprite);
+
+
+                float finalPosY = activeSymbolCount * mySlotItemHt + (i+.5f)* mySlotItemHt - reelHt/2;
+                SlideIcon(hiddenSlotItems[i].myRect, finalPosY, myReelAnimDuration);
+                SetCellOccupied(hiddenSlotItems[i], finalPosY);
+            }
+
         }
 
         private void SpawnReel(List<SlotItem> slotItems, int activeSymbolCount = 0)
         {
 
-            for (int i = 0; i < slotItems.Count; i++)
-            {
-                slotItems[i].gameObject.SetActive(true);
-                IconData iconData = slotData.iconSprites[Random.Range(0, slotData.iconSprites.Length - 1)];
-                slotItems[i].InitSlotItem(iconData.myID, iconData.normalSprite, iconData.highlightSprite);
-                float finalPosY = myInitYPos - ((mySlotItems.Count - i - activeSymbolCount) * mySlotItemHt);
-                SlideIcon(slotItems[i].myRect, finalPosY, myReelAnimDuration);
-                SetCellOccupied(slotItems[i], finalPosY);
-            }
-
+           
         }
 
         private void SetCellOccupied(SlotItem item, float finalPos)
@@ -173,7 +206,8 @@ namespace slotgame
 
         private void SlideIcon(RectTransform rectTransform, float finalPos, float duration)
         {
-            rectTransform.DOAnchorPosY(finalPos, duration).OnComplete(() => { AudioManager.Instance.PlayReelStopSound(); });
+            Debug.Log("FinalPos:" + finalPos);
+            rectTransform.DOAnchorPosY(finalPos, duration).SetEase(Ease.OutExpo).OnComplete(() => { AudioManager.Instance.PlayReelStopSound(); });
         }
     }
 }

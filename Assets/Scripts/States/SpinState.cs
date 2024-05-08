@@ -8,6 +8,7 @@ namespace slotgame
         public override void Enter()
         {
             Debug.Log("Entering Spin State:");
+            PlayerManager.Instance.OnSpin();
             SpinReels();
             base.Enter();
         }

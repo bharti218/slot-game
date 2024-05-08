@@ -14,29 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprites:
   - myID: 1
-    normalSprite: {fileID: 21300000, guid: dee72fd68e8514465842791ec379b907, type: 3}
+    normalSprite: {fileID: 21300000, guid: 2dfea9d2727164a79a43b68c1a4165cd, type: 3}
     highlightSprite: {fileID: 21300000, guid: f8673b129e8fb4860b5365871f86c342, type: 3}
   - myID: 2
-    normalSprite: {fileID: 21300000, guid: 5534c43bdbe224499957535ba2f2022e, type: 3}
+    normalSprite: {fileID: 21300000, guid: 42f36fc27930a46088af29919313a0d4, type: 3}
     highlightSprite: {fileID: 21300000, guid: 73e7a385fce7e48c89125fabce3f01a4, type: 3}
   - myID: 3
-    normalSprite: {fileID: 21300000, guid: 2b8ceecce4d8a4bcaafae351075ac8ea, type: 3}
+    normalSprite: {fileID: 21300000, guid: 02c49f2826dc048c499c816b0b6cc39e, type: 3}
     highlightSprite: {fileID: 21300000, guid: 9d6592e1486e04957946e1140318eced, type: 3}
   - myID: 4
-    normalSprite: {fileID: 21300000, guid: 303a9d3fb7571413fa0b05ee2c9ab893, type: 3}
+    normalSprite: {fileID: 21300000, guid: 151171a0c9540472f8cdd9b2f88e2b33, type: 3}
     highlightSprite: {fileID: 21300000, guid: 95981419c04dd4536822139eb88af93e, type: 3}
   - myID: 5
-    normalSprite: {fileID: 21300000, guid: c3df8357fe9c744aea8c377a43c1a7fd, type: 3}
+    normalSprite: {fileID: 21300000, guid: c315f5b455fe14c9eb322db0c0c7b427, type: 3}
     highlightSprite: {fileID: 21300000, guid: 37e2679e391a94e139f19ea2169c4b75, type: 3}
   - myID: 6
-    normalSprite: {fileID: 21300000, guid: e6b1ae4e876bf446c965e2c36b7f2711, type: 3}
+    normalSprite: {fileID: 21300000, guid: 17bfc9881d476470dba20befe259709a, type: 3}
     highlightSprite: {fileID: 21300000, guid: 909dde6c638c445cd8c2b3541fcb7bc2, type: 3}
   - myID: 7
-    normalSprite: {fileID: 21300000, guid: 2d2f7812ef6b3435cae6cbae993bbd45, type: 3}
+    normalSprite: {fileID: 21300000, guid: 84c1244e6d1a44d969e189c1e361f897, type: 3}
     highlightSprite: {fileID: 21300000, guid: b35e3edbe3300474a9ee15fc88d6f789, type: 3}
   - myID: 8
-    normalSprite: {fileID: 21300000, guid: 710623c9a7a4c47149cec102cc10a28b, type: 3}
+    normalSprite: {fileID: 21300000, guid: f5b816494f7bb4338a8692cdee203f3c, type: 3}
     highlightSprite: {fileID: 21300000, guid: f560a69cbb1d34da7af3e92bcfa5d1b6, type: 3}
-  - myID: 9
-    normalSprite: {fileID: 21300000, guid: dd35634da545d4c9a9ab7c23dd90ade0, type: 3}
-    highlightSprite: {fileID: 21300000, guid: 03ab0c8180a4c4745a09fc9a85c8fe84, type: 3}

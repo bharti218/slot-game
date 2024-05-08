@@ -43,6 +43,7 @@ namespace slotgame
 
             // If the max frequent element is occuring as many times as required to win the level the destroy it.
             // else Set Idle State
+            int totalHighlightedSymbol = 0;
 
             if (maxCount >= LevelGenerator.Instance.maxMatchSymbol)
             {
@@ -50,9 +51,11 @@ namespace slotgame
                 {
                     LevelGenerator.Instance.myReels[i].HighLightMaxOccuringSymobol(maxfrequentIcon);
                     LevelGenerator.Instance.myReels[i].DestroyMaxOccuringSymobol(maxfrequentIcon);
+                    totalHighlightedSymbol += LevelGenerator.Instance.myReels[i].GetHighLightedSymbolCount();
                 }
 
                 Invoke(nameof(SetRespawnStateState), 2f);
+                PlayerManager.Instance.OnWinning(totalHighlightedSymbol * LevelGenerator.Instance.winningFactor);
             }
 
             else

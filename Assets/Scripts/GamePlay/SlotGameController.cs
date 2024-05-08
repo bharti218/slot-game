@@ -16,8 +16,8 @@ namespace slotgame
 
         void Start()
         {
-            spinBtn.onClick.AddListener(SetSpinState);
-            ChangeState<IdleState>();
+           spinBtn.onClick.AddListener(SetSpinState);
+            ChangeState<SpinState>();
         }
 
         public void SetSpinState()
