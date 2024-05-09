@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animDuration: 0.5
-  maxMatchSymbol: 3
+  maxMatchSymbol: 4
   maxRow: 3
   maxCol: 5
   betAmount: 10
