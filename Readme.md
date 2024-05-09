@@ -1,4 +1,4 @@
-#Level Generator Config: 
+# Level Generator Config: 
 1. AnimDuration: animation duration for symbols for play falling animation.
 2. Min Match Symbol: minimum matching symbols required to win the round.
 3. Max Row: number of rows in the grid
