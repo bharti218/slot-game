@@ -39,11 +39,6 @@ namespace slotgame
 
                 Cell cell = new Cell();
 
-                //if(iconCount%2 == 0)
-                //    cell.yCoordinate = (i - iconCount / 2 +.5f) * mySlotItemHt;
-                //else
-                //    cell.yCoordinate = (i - iconCount/2 ) * mySlotItemHt;
-
                 cell.yCoordinate = (i+.5f)* mySlotItemHt - reelHt / 2;
                 cells.Add(cell);
             }
@@ -148,13 +143,6 @@ namespace slotgame
         public void RespwanHiddenReels()
         {
 
-            //if (iconCount % 2 == 0)
-            //    cell.yCoordinate = (i - iconCount / 2 + .5f) * mySlotItemHt;
-            //else
-            //    cell.yCoordinate = (i - iconCount / 2) * mySlotItemHt;
-
-
-
             int activeSymbolCount = mySlotItems.Count - hiddenSlotItems.Count;
             for (int i = 0; i < hiddenSlotItems.Count; i++)
             {
@@ -168,12 +156,6 @@ namespace slotgame
                 SetCellOccupied(hiddenSlotItems[i], finalPosY);
             }
 
-        }
-
-        private void SpawnReel(List<SlotItem> slotItems, int activeSymbolCount = 0)
-        {
-
-           
         }
 
         private void SetCellOccupied(SlotItem item, float finalPos)
